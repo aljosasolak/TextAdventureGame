@@ -1,17 +1,22 @@
 package at.swdev.wifi.characters;
 
+
 public class Character {
 
+    //Attribute des Spielers
     private String name;
     private int health;
     private int strength;
 
+    //Konstruktor
     public Character(String name, int health, int strength) {
         this.name = name;
         this.health = health;
         this.strength = strength;
     }
 
+
+    //Getters und Setters
     public String getName() {
         return name;
     }
