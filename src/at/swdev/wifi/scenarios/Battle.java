@@ -18,7 +18,5 @@ public class Battle implements Scenario {
 
     }
 
-    public void hint() {
-
-    };
+    ;
 }
