@@ -42,8 +42,6 @@ public class Puzzle implements Scenario {
     List<String> answers = List.of(answer1, answer2, answer3);
 
 
-
-
     @Override
     public void execute(Character character) {
         Scanner input = new Scanner(System.in);
@@ -61,9 +59,9 @@ public class Puzzle implements Scenario {
             if (userAnswer.equalsIgnoreCase(answers.get(index))) {
                 System.out.printf("""
                         Congratulations, %s, I've seen,
-                        You merit to enter the world of unseen!""", character.getName());
+                        You merit to enter the world of unseen!\n""", character.getName());
                 isAnswered = true;
-                input.close();
+                //input.close(); this is where the error was!
             } else if (userAnswer.equalsIgnoreCase("h")) {
                 System.out.printf("""
                         In the riddle of the sphinx, you must not feign.

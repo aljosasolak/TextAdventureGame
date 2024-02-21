@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Battle implements Scenario {
 
     //Attribute
-    private int enemyStrength;
+    private int enemyHealth;
     private String instructionMessage = """
             In the midst of an enchanted forest, you find yourself standing at a crossroad,
             where the air is thick with magic and the whispers of ancient spirits.
@@ -41,16 +41,16 @@ public class Battle implements Scenario {
 
 
     //Methoden
-    private void setEnemyStrength(int enemyStrength) {
-        if (enemyStrength < 0) {
-            this.enemyStrength = 0;
+    private void setEnemyHealth(int enemyHealth) {
+        if (enemyHealth < 0) {
+            this.enemyHealth = 0;
         } else {
-            this.enemyStrength = enemyStrength;
+            this.enemyHealth = enemyHealth;
         }
     }
 
-    private int getEnemyStrength() {
-        return enemyStrength;
+    private int getEnemyHealth() {
+        return enemyHealth;
     }
 
     //Der Benutzer entscheidet, ob er links oder rechts geht
@@ -60,41 +60,40 @@ public class Battle implements Scenario {
         Scanner input = new Scanner(System.in);
         String choice = input.nextLine().toLowerCase();
 
-
         if (choice.equals("l")) {
-            setEnemyStrength(50);
+            setEnemyHealth(50);
             System.out.println(wentLeft);
         } else if (choice.equals("r")) {
-            setEnemyStrength(80);
+            setEnemyHealth(80);
             System.out.println(wentRight);
         } else {
-            setEnemyStrength(90);
+            setEnemyHealth(90);
             System.out.println(indeciseve);
         }
 
 
         String userAnswer;
         //Der Benutzer geht links
-        while (enemyStrength > 0 && choice.equals("l")) {
+        while (enemyHealth > 0 && choice.equals("l")) {
             userAnswer = input.nextLine().toLowerCase();
             if (userAnswer.equals("w")) {
-                setEnemyStrength(enemyStrength - 7);
-                character.setStrength(character.getStrength() - 1);
+                setEnemyHealth(enemyHealth - 7);
+                character.setHealth(character.getHealth() - 1);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else if (userAnswer.equals("t")) {
-                setEnemyStrength(enemyStrength - 15);
-                character.setStrength(character.getStrength() - 2);
+                setEnemyHealth(enemyHealth - 15);
+                character.setHealth(character.getHealth() - 2);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else if (userAnswer.equals("d")) {
-                setEnemyStrength(enemyStrength - 22);
-                character.setStrength(character.getStrength() - 4);
+                setEnemyHealth(enemyHealth - 22);
+                character.setHealth(character.getHealth() - 4);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else {
                 System.out.println("<press w to wait, t to tell a tale or d to dance>");
             }
@@ -102,26 +101,26 @@ public class Battle implements Scenario {
 
 
         //Der Benutzer geht rechts
-        while (enemyStrength > 0 && choice.equals("r")) {
+        while (enemyHealth > 0 && choice.equals("r")) {
             userAnswer = input.nextLine().toLowerCase();
             if (userAnswer.equals("h")) {
-                setEnemyStrength(enemyStrength - 7);
-                character.setStrength(character.getStrength() - 1);
+                setEnemyHealth(enemyHealth - 7);
+                character.setHealth(character.getHealth() - 1);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else if (userAnswer.equals("e")) {
-                setEnemyStrength(enemyStrength - 17);
-                character.setStrength(character.getStrength() - 2);
+                setEnemyHealth(enemyHealth - 17);
+                character.setHealth(character.getHealth() - 2);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else if (userAnswer.equals("f")) {
-                setEnemyStrength(enemyStrength - 26);
-                character.setStrength(character.getStrength() - 5);
+                setEnemyHealth(enemyHealth - 26);
+                character.setHealth(character.getHealth() - 5);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else {
                 System.out.println("<press h for hide, e for evade or f for fight>");
             }
@@ -129,27 +128,26 @@ public class Battle implements Scenario {
         }
 
         //Der Benutzer ist unentschlossen und gab falsche Eingabe ein (ist die Bedingung richtig formuliert?)
-        while (enemyStrength > 0) {
+        while (enemyHealth > 0) {
             userAnswer = input.nextLine().toLowerCase();
             if (userAnswer.equals("e")) {
-                setEnemyStrength(enemyStrength - 17);
-                character.setStrength(character.getStrength() - 3);
+                setEnemyHealth(enemyHealth - 17);
+                character.setHealth(character.getHealth() - 3);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else if (userAnswer.equals("f")) {
-                setEnemyStrength(enemyStrength - 25);
-                character.setStrength(character.getStrength() - 6);
+                setEnemyHealth(enemyHealth - 25);
+                character.setHealth(character.getHealth() - 6);
                 System.out.println(itWorksMessage);
-                System.out.printf("Your strength: %d\n", character.getStrength());
-                System.out.printf("Enemy's strength %d\n", getEnemyStrength());
+                System.out.printf("Your health: %d\n", character.getHealth());
+                System.out.printf("Enemy's health %d\n", getEnemyHealth());
             } else {
                 System.out.println("<press e for evade or f for fight>");
             }
 
         }
-
-        input.close();
-        System.out.printf("Congratulations, %s! \nYou have emerged triumphant in this challenge!", character.getName());
+        //input.close(); this should probably be deleted if the third scenario comes
+        System.out.printf("Congratulations, %s! \nYou have emerged triumphant in this challenge!\n", character.getName());
     }
 }

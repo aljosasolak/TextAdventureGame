@@ -9,10 +9,10 @@ public class Character {
     private int strength;
 
     //Konstruktor
-    public Character(String name, int health, int strength) {
+    public Character(String name) {
         this.name = name;
-        this.health = health;
-        this.strength = strength;
+        setHealth(75);
+        setStrength(50);
     }
 
 
@@ -30,7 +30,11 @@ public class Character {
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        if (health < 0) {
+            this.health = 0;
+        } else {
+            this.health = health;
+        }
     }
 
     public int getStrength() {
@@ -38,6 +42,10 @@ public class Character {
     }
 
     public void setStrength(int strength) {
-        this.strength = strength;
+        if (strength < 0) {
+            this.strength = 0;
+        } else {
+            this.strength = strength;
+        }
     }
 }

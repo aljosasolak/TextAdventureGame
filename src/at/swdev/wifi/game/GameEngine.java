@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import at.swdev.wifi.characters.Character;
+import at.swdev.wifi.scenarios.Battle;
+import at.swdev.wifi.scenarios.FinalTask;
+import at.swdev.wifi.scenarios.Puzzle;
 import at.swdev.wifi.scenarios.Scenario;
 
 
@@ -22,6 +25,17 @@ public class GameEngine {
         // Game initialization and loop
         System.out.println("Welcome to the Adventure Game!");
         System.out.println("Your journey begins now.");
+        System.out.println("Type your name, brave traveler, and let it be known throughout our realm: ");
+        Scanner input = new Scanner(System.in);
+
+        Character player = new Character(input.nextLine());
+        Puzzle puzzle = new Puzzle();
+        Battle battle = new Battle();
+        FinalTask finalTask = new FinalTask();
+
+        scenarios.add(puzzle);
+        scenarios.add(battle);
+        scenarios.add(finalTask);
 
         boolean gameRunning = true;
         int currentScenarioIndex = 0;
@@ -32,26 +46,27 @@ public class GameEngine {
 
             // Check player status (health, win/lose conditions, etc.)
             if (player.getHealth() <= 0) {
-                System.out.println("You lost the game");
+                System.out.println("Fortune has turned against thee.\"You lost the game");
                 gameRunning = false;
             }
 
             // Allow the player to make choices that affect the game flow here
             System.out.println("Do you wish to continue? (yes/no)");
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-            if ("no".equalsIgnoreCase(input)) {
+            if ("no".equalsIgnoreCase(input.nextLine())) {
                 System.out.println("You quit the game");
                 gameRunning = false;
+            } else {
+                currentScenarioIndex++; // Move to the next scenario
             }
+                // Check for the end of the game
+                if (currentScenarioIndex >= scenarios.size()) {
+                    System.out.println("Congratulations! You won the game!");
+                }
+            }
+
+            input.close();
+
         }
 
-
-        currentScenarioIndex++; // Move to the next scenario
-        // Check for the end of the game
-        if (currentScenarioIndex >= scenarios.size()) {
-            System.out.println("Congratulations! You won the game!");
-        }
     }
 
-}
