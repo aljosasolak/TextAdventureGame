@@ -47,7 +47,7 @@ public class GameEngine {
 
             // Check player status (health, win/lose conditions, etc.)
             if (player.getHealth() <= 0 || player.getStrength() <= 0) {
-                System.out.println("Fortune has turned against thee.\nYou lost the game");
+                System.out.println("Game over");
                 //this did not work gameRunning = false; why?
                 break;
             }

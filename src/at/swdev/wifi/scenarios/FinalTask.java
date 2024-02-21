@@ -1,6 +1,7 @@
 package at.swdev.wifi.scenarios;
 
 import at.swdev.wifi.characters.Character;
+
 import java.util.Scanner;
 
 public class FinalTask implements Scenario {
@@ -30,20 +31,29 @@ public class FinalTask implements Scenario {
             if (player.getName().equalsIgnoreCase(input.nextLine())) {
                 System.out.println("You proved to be the true master of wisdom and magic!");
                 break;
-            } else if (player.getStrength() > 34 & player.getHealth() > 30) {
+                //The conditions should be defined better
+                /*Messages like this appear
+                The wrong answer has weakened you!
+                Your health: 10
+                Your strength: 0
+                Your name is your clue,
+                for it holds the key to the magic pure and true
+                Try your luck again:
+                Game over
+                 */
+            } else if (player.getStrength() > 34 && player.getHealth() > 30) {
                 player.setStrength(player.getStrength() - 17);
                 player.setHealth(player.getHealth() - 15);
                 System.out.println("The wrong answer has weakened you!");
-                System.out.printf("Your health: %d\n", player.getHealth());
                 System.out.printf("Your strength: %d\n", player.getStrength());
+                System.out.printf("Your health: %d\n", player.getHealth());
                 System.out.println("Try your luck again: ");
-            } else if ((18 < player.getStrength() & player.getStrength() <= 34) ||
-                    ((16 < player.getHealth() & player.getHealth() <= 30))) {
+            } else if (player.getStrength() <= 34 || player.getHealth() <= 30) {
                 player.setStrength(player.getStrength() - 17);
                 player.setHealth(player.getHealth() - 15);
                 System.out.println("The wrong answer has weakened you!");
-                System.out.printf("Your health: %d\n", player.getHealth());
                 System.out.printf("Your strength: %d\n", player.getStrength());
+                System.out.printf("Your health: %d\n", player.getHealth());
                 System.out.println("Your name is your clue,\nfor it holds the key to the magic pure and true");
                 System.out.println("Try your luck one last time: ");
             } else {
