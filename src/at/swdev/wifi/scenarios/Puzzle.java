@@ -73,11 +73,6 @@ public class Puzzle implements Scenario {
                         Denied is entry through these ancient doors.
                         Type your answer again, with thought that explores.\n""", answers.get(index));
             }
-
         }
-
-
     }
-
-
 }

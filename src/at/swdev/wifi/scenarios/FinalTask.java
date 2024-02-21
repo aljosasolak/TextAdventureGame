@@ -16,7 +16,8 @@ public class FinalTask implements Scenario {
     private final String taskNotPassedMessage = """
             Your first answer was '%s', brave traveler.
             This time you didn't reach the source of magic and wisdom,
-            but fear not and try again! 😊""";
+            but fear not and try again! 😊
+            """;
 
 
     @Override
